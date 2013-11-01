@@ -1,0 +1,62 @@
+/*
+Theme Name: Big Brother
+Theme URI: http://automattic.com
+Author: Automattic
+Author URI: http://automattic.com
+Description: A pleasant-to-read customizable theme designed for large organizations and government. Customize the header and background.
+Version: 1.0
+License: GNU General Public License
+License URI: license.txt
+Text Domain: big-brother
+Domain Path: /languages/
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+ Big Brother is based on Underscores http://underscores.me/, (C) 2012-2013 Automattic, Inc.
+
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+and Blueprint http://www.blueprintcss.org/
+*/
+
+// This was built using Michael Arestad's starting CSS framework, Aviator.
+
+// Variables
+@import "variables/_colors"; // Colors
+@import "variables/_typography"; // Typography
+@import "variables/_variables"; // Other variables
+
+// Functions
+@import "_functions.scss"; // Nifty functions. Take a look!
+
+// Mixins
+@import "mixins/_vendor-prefixes"; // Quickly implement vendor-prefixes
+@import "mixins/_aviator"; // Fancy aviator mixins full of nifty patterns
+
+// Fonts and Icon fonts
+@import "icons/_genericons"; // Genericon icon font
+
+// Normalize
+@import "_normalize"; // Normalize.css + a goody or two
+@import "_base"; // Style naked elements
+
+// Begin partials
+// @import "partials/_grid-responsive"; // Responsive Bootstrap grid
+@import "partials/_buttons"; // Funky button styles
+@import "partials/_form"; // Form and input styles
+@import "partials/_nav-horizontal"; // Horizontal navigation
+// @import "partials/_nav-off-canvas"; // Slide-in "hamburger" or drawer menu for small screens
+// @import "partials/_nav-side"; // Side navigation
+
+// Main styles
+@import "_main"; // All of your .classy styles
+@import "_media-queries"; // Media queries!
+
+// Support styles
+@import "_chrome-frame"; // Styling for Chrome Frame prompt
+@import "_helper"; // Some useful helper classes
+@import "_ie"; // IE-specific styling :D
+@import "_print"; // Print styling

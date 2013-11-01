@@ -1,0 +1,645 @@
+// ==========================================================================
+// Main author styles
+// ==========================================================================
+
+
+html,
+body {
+    background: #f3f7f9;
+    background: desaturate(lighten($main-color, 66%), 50%);
+}
+.custom-background {
+    background-position: center !important;
+    @include background-size(cover);
+
+    .site-footer {
+        border-top: 10px solid $main-color;
+    }
+}
+
+
+// ==========================================================================
+// Header
+// ==========================================================================
+
+.site-header {
+    text-align: center;
+    background: $main-color;
+}
+.site-header {
+    position: relative;
+}
+.header-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    ~ .main-navigation {
+        position: relative;
+
+        > div > ul {
+            background: transparentize(darken($main-color, 4%), .4);
+        }
+    }
+}
+.site-branding {
+    position: relative;
+    margin: 50px 0 30px;
+}
+.site-title {
+    margin: 0;
+    font-size: 30px;
+    text-transform: uppercase;
+
+    a {
+        color: #fff;
+    }
+}
+.site-description {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: $gentium;
+    font-style: italic;
+}
+.primary {
+    float: left;
+    padding: 30px 0;
+    width: 70%;
+}
+.secondary {
+    float: right;
+    padding: 30px;
+    width: 30%;
+    font-size: 16px;
+
+    .widget {
+        &:first-of-type {
+            @include border-radius-corner(left, top, 5px);
+            @include border-radius-corner(right, top, 5px);
+        }
+        &:last-of-type {
+            @include border-radius-corner(left, bottom, 5px);
+            @include border-radius-corner(right, bottom, 5px);
+        }
+    }
+}
+.article-wrapper {
+    margin: 0 0 15px;
+    padding: 30px;
+    text-align: right;
+    background: #fff;
+    @include border-radius-corner(right, top, 5px);
+    @include border-radius-corner(right, bottom, 5px);
+}
+.type-post,
+.type-page {
+    display: inline-block;
+    text-align: left;
+    margin: 0 30px 0 0;
+    width: 600px;
+}
+
+
+// ==========================================================================
+// Main Navigation
+// ==========================================================================
+
+.main-navigation {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: $open-sans;
+
+    ul {
+        background: darken($main-color, 4%);
+    }
+    li {
+        &:hover {
+            background: #ecf1f4;
+
+            a,
+            a:visited {
+                color: #3e749b;
+            }
+        }
+        > ul {
+            background: #ecf1f4;
+        }
+        li {
+            &:hover {
+                background: #fff;
+            }
+        }
+    }
+    a,
+    a:visited {
+        color: desaturate(lighten($main-color, 62%), 5%);
+
+        &:hover,
+        &:active {
+            color: desaturate(lighten($main-color, 70%), 0%);
+        }
+    }
+}
+
+// Small menu
+.menu-toggle {
+    cursor: pointer;
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .menu-toggle,
+    .main-navigation.toggled .nav-menu {
+        display: block;
+    }
+
+    .main-navigation ul {
+        display: none;
+    }
+}
+
+
+// ==========================================================================
+// Breadcrumbs
+// ==========================================================================
+
+.breadcrumbs {
+    padding-top: 30px;
+    font-size: 16px;
+    line-height: 1em;
+    font-family: $open-sans;
+}
+.breadcrumbs-root {
+    display: inline-block;
+    padding: .7em 1em;
+    color: desaturate(lighten($main-color, 66%), 50%);
+    font-weight: 800;
+    background: desaturate(lighten($main-color, 62%), 50%);
+    background: $main-color;
+    z-index: 1;
+    @include arrow-lazy(right, $size: 1.2em, $margin: 0, $color: $main-color);
+
+    &:visited {
+        color: #fff;
+    }
+}
+.breadcrumbs-ancestor,
+.breadcrumbs-current {
+    padding: em(5, 16) em(12, 16) em(5, 16) em(32, 16);
+    background: desaturate(lighten($main-color, 62%), 50%);
+}
+.breadcrumbs-ancestor {
+    position: relative;
+
+    &:first-of-type {
+        padding-left: 35px;
+    }
+    a {
+        border-color: desaturate(lighten($main-color, 62%), 50%);
+
+        &:before,
+        &:after {
+            $size: 1em;
+
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-top: $size * -1;
+            border-top: $size solid transparent;
+            border-bottom: $size solid transparent;
+            border-left: $size solid red;
+            border-left-color: inherit;
+        }
+        &:before {
+            margin-left: 1px;
+            border-left-color: desaturate(lighten($main-color, 52%), 40%);
+        }
+    }
+}
+.breadcrumbs-current {
+    padding-right: em(18, 16);
+    color: #777;
+    background: #fff;
+    @include border-radius-corner(right, top, 3px);
+    @include border-radius-corner(right, bottom, 3px);
+}
+
+
+// ==========================================================================
+// Content
+// ==========================================================================
+
+.archive,
+.search {
+    .page-header {
+        background: #fff;
+        padding: 30px;
+        text-align: right;
+        margin: 0 0 15px;
+        @include border-radius-corner(right, top, 5px);
+        @include border-radius-corner(right, bottom, 5px);
+    }
+    .page-title {
+        display: inline-block;
+        margin: 0 30px 0 0;
+        width: 600px;
+        font-weight: 400;
+        color: desaturate(lighten($main-color, 10%), 30%);
+        font-size: 28px;
+        text-align: left;
+
+        span {
+            font-weight: 800;
+        }
+    }
+}
+.sticky {
+}
+.hentry {
+}
+.entry-header h1 {
+    margin-top: 0;
+}
+.entry-title a {
+    color: $main-color;
+    word-wrap: break-word;
+}
+.byline,
+.updated {
+    display: none;
+}
+.single .byline,
+.group-blog .byline {
+    display: inline;
+}
+.page-links {
+    clear: both;
+    margin: 0 0 1.5em;
+}
+.entry-meta{
+    font-family: $open-sans;
+    font-size: 14px;
+}
+.posted-on,
+.entry-categories,
+.entry-tags {
+    margin-right: 10px;
+
+    a:first-child:before {
+        content: '\f100';
+        position: relative;
+        top: 3px;
+        display: inline-block;
+        width: 1.4em;
+        font-size: 18px;
+        line-height: 1;
+        font-family: $genericons;
+        text-decoration: inherit;
+        font-weight: normal;
+        font-style: normal;
+        text-align: center;
+        vertical-align: top;
+        text-decoration: none;
+    }
+}
+.posted-on {
+    a:first-child {
+        &:before {
+            content: '\f303';
+        }
+    }
+}
+.entry-categories {
+    a:first-child {
+        &:before {
+            content: '\f301';
+        }
+    }
+}
+.entry-tags {
+    a:first-child {
+        &:before {
+            content: '\f302';
+        }
+    }
+}
+
+
+// ==========================================================================
+// Asides
+// ==========================================================================
+
+.blog .format-aside .entry-title,
+.archive .format-aside .entry-title {
+    display: none;
+}
+
+
+// ==========================================================================
+// Media
+// ==========================================================================
+
+.page-content img.wp-smiley,
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+    border: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+}
+.wp-caption {
+    border: 1px solid #ccc;
+    margin-bottom: 1.5em;
+    max-width: 100%;
+}
+.wp-caption img[class*="wp-image-"] {
+    display: block;
+    margin: 1.2% auto 0;
+    max-width: 98%;
+}
+.wp-caption-text {
+    text-align: center;
+}
+.wp-caption .wp-caption-text {
+    margin: 0.8075em 0;
+}
+.site-main .gallery {
+    margin-bottom: 1.5em;
+}
+.gallery-caption {
+}
+.site-main .gallery a img {
+    border: none;
+    height: auto;
+    max-width: 90%;
+}
+.site-main .gallery dd {
+    margin: 0;
+}
+.site-main .gallery-columns-4 .gallery-item {
+}
+.site-main .gallery-columns-4 .gallery-item img {
+}
+
+// Make sure embeds and iframes fit their containers
+embed,
+iframe,
+object {
+    max-width: 100%;
+}
+
+
+// ==========================================================================
+// Navigation
+// ==========================================================================
+
+.site-main [class*="navigation"] {
+    // margin-left: 15px;
+    overflow: hidden;
+}
+.nav-previous,
+.nav-next {
+    a {
+        display: inline-block;
+        margin: 0 15px;
+        padding: .7em 1em;
+        color: desaturate(lighten($main-color, 66%), 50%);
+        font-size: 14px;
+        font-family: $open-sans;
+        background: $main-color;
+        @include border-radius(5px);
+    }
+
+    .meta-nav {
+        display: none;
+    }
+}
+.nav-previous {
+    float: left;
+    width: 50%;
+
+    a {
+        margin-right: 0;
+    }
+}
+.nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+}
+
+// ==========================================================================
+// Footer
+// ==========================================================================
+
+.site-footer {
+    padding: 30px;
+    font-size: 16px;
+    background: desaturate(lighten($main-color, 62%), 50%);
+}
+
+
+// ==========================================================================
+// Comments
+// ==========================================================================
+
+.comments-area {
+    margin-top: 15px;
+    background: #fff;
+    @include border-radius-corner(right, top, 5px);
+    @include border-radius-corner(right, bottom, 5px);
+}
+.comments-wrapper {
+    padding: 30px;
+}
+.comments-title {
+    margin: 0 30px 30px;
+    font-weight: 400;
+
+    span {
+        font-weight: 800;
+    }
+}
+.comment-list {
+    margin: 0;
+    list-style: none;
+
+    .children {
+        list-style: none;
+    }
+}
+.comment-body {
+    position: relative;
+    margin-bottom: 45px;
+    @extend .clearfix;
+
+    .avatar {
+        margin-bottom: 15px;
+    }
+    .reply {
+        font-size: 14px;
+        font-family: $open-sans;
+    }
+}
+.comment-author {
+    float: left;
+    width: 74px;
+
+    .fn {
+        display: block;
+        font-size: 14px;
+        font-family: $open-sans;
+        font-style: normal;
+        word-wrap: break-word;
+    }
+}
+.comment-metadata,
+.comment-content,
+.comment .reply {
+    margin-left: 104px;
+}
+.comment-metadata {
+    line-height: 1;
+
+    a,
+    a:visited {
+        position: relative;
+        top: -5px;
+        color: #aaa;
+        font-size: 12px;
+        font-family: $open-sans;
+    }
+    .comment-edit-link,
+    .comment-edit-link:visited {
+        margin-left: 15px;
+        color: saturate(lighten($main-color, 15%), 25%);
+    }
+}
+.comment-content {
+    font-size: 18px;
+}
+.comment-respond {
+    padding: 30px;
+    border-top: 1px solid desaturate(lighten($main-color, 56%), 50%);
+    background: desaturate(lighten($main-color, 62%), 50%);
+    @include border-radius-corner(right, top, 5px);
+    @include border-radius-corner(right, bottom, 5px);
+}
+.comments-wrapper + .comment-respond {
+    @include border-radius-corner(right, top, 0);
+}
+.comment-content a {
+    word-wrap: break-word;
+}
+.bypostauthor {
+}
+.form-allowed-tags {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+.comment-reply-title {
+    margin-top: 0;
+}
+.comment-notes {
+    margin-bottom: 1em;
+}
+.comment-form {
+    p {
+        position: relative;
+    }
+    label {
+        position: absolute;
+        top: 12px;
+        left: 1em;
+        font-family: $open-sans;
+        font-size: 13px;
+        pointer-events: none;
+
+        &[for="comment"] {
+            position: static;
+        }
+    }
+    input[type="text"] {
+        text-indent: 80px;
+        @include transition(all .2s ease-in-out);
+
+        &:active,
+        &:focus {
+            position: relative;
+            text-indent: 0;
+            z-index: 99;
+        }
+    }
+}
+.required {
+    color: #d01717;
+}
+.logged-in-as {
+    margin: 1em 0;
+}
+
+
+// ==========================================================================
+// Widgets
+// ==========================================================================
+
+.widget {
+    padding: 15px;
+    border-top: 1px solid desaturate(lighten($main-color, 56%), 50%);
+    background: desaturate(lighten($main-color, 62%), 50%);
+
+    &:first-child {
+        border-top: none;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    input[type="search"] {
+        margin-bottom: 0;
+    }
+}
+.widget-title {
+    margin-top: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+// Make sure select elements fit in widgets
+.widget select {
+    max-width: 100%;
+}
+
+// Search widget
+.widget_search .search-submit {
+    display: none;
+}
+
+
+// ==========================================================================
+// Infinite Scroll
+// ==========================================================================
+
+// Globally hidden elements when Infinite Scroll is supported and in use.
+.infinite-scroll .paging-navigation, // Older / Newer Posts Navigation (always hidden)
+.infinite-scroll.neverending .site-footer { // Theme Footer (when set to scrolling)
+    display: none;
+}
+
+// When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before
+.infinity-end.neverending .site-footer {
+    display: block;
+}

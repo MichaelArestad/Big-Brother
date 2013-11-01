@@ -1,0 +1,93 @@
+// Below, you can choose from either using global form styles or class-driven
+// form styles. By default, the global styles are on.
+
+%form {
+    p {
+        margin: 0;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+%form-field {
+    margin-bottom: 20px;
+    padding: em(10);
+    width: 100%;
+    color: #555;
+    background: #fbfbfb;
+    font-size: .9em;
+    font-family: $open-sans;
+    font-weight: 400;
+    border: 1px solid #a6b7c0;
+    @include border-radius(3px);
+    @include box-sizing;
+}
+
+%form-field {
+    @include placeholder() {
+        color: #a6b7c0;
+    }
+}
+
+%input {
+    &.input-wide {
+        // width: 100%;
+    }
+}
+
+%form-field-focus {
+    color: #5c6671;
+    background: #fff;
+    outline: none;
+}
+
+%textarea {
+    // width: 100%;
+}
+
+
+// ==========================================================================
+// Global form elements
+// ==========================================================================
+
+form {
+    @extend %form;
+}
+input[type="text"],
+input[type="password"],
+input[type="search"],
+textarea {
+    @extend %form-field;
+}
+input {
+    @extend %input;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+    @extend %form-field-focus;
+}
+textarea {
+    @extend %textarea;
+}
+
+// ==========================================================================
+// Classy form elements
+// ==========================================================================
+
+// .form-container {
+//     @extend %form
+// }
+// .form-field {
+//     @extend %form-field;
+// }
+// textarea.form-field {
+//    @extend %textarea;
+// }
+// .form-field:focus {
+//     @extend %form-field-focus;
+// }

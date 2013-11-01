@@ -1,0 +1,63 @@
+// ==========================================================================
+// HORIZONTAL NAVIGATION
+// 
+// Includes basic functionality and dropdowns.
+//
+// Add .nav-horizontal to the top level ul and, BOOM!, done!
+// ==========================================================================
+
+.nav-horizontal {
+    text-align: center;
+
+    ul {
+        margin: 0;
+        padding: 0;
+
+        ul {
+            a,
+            a:visited {
+                color: #3e749b;
+            }
+        }
+    }
+    > div > ul {
+        @extend .clearfix;
+
+        > li {
+            float: left;
+        }
+    }
+    li {
+        position: relative;
+        text-align: left;
+
+        &:hover {
+            > ul {
+                display: block;
+            }
+        }
+
+        > ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 12.5em; // 200/16
+            z-index: 2; // Keeps hover state on top
+        }
+        li {
+            > ul {
+                left: 100%;
+                top: 0;
+            }
+        }
+    }
+    a {
+        display: block;
+        padding: 9px 15px;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

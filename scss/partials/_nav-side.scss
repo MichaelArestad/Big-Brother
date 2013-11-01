@@ -1,0 +1,232 @@
+// ==========================================================================
+// SIDE NAVIGATION
+// 
+// Includes styling and functionality.
+//
+// Add .nav-side to the nav or div containing the ul and, BOOM!, done!
+// ==========================================================================
+
+$nav-side-width: 180px; // customize width
+
+.nav-side {
+    // entypo
+    [class*="entypo-"]:before {
+        display: inline-block;
+        position: relative;
+        top: -1px;
+        margin-right: 10px;
+        width: 20px;
+        font-size: 1.2em;
+        line-height: 1;
+        font-family: 'entypo', sans-serif;
+        text-align: center;
+        vertical-align: middle;
+    }
+    [class*="genericon-"]:before {
+    }
+    ul {
+        width: $nav-side-width;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    > ul,
+    > ul ul {
+        > li {
+            &:first-child {
+                @include border-radius-corner(right, top);
+
+                > a {
+                    padding-top: 13px;
+                }
+            }
+            &:last-child {
+                @include border-radius-corner(right, bottom);
+
+                > a {
+                    padding-bottom: 13px;
+                }
+            }
+        }
+    }
+    > ul {
+        ul {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            padding-left: 10px;
+
+            li {
+                &:first-child {
+                    @include border-radius-corner(left, top);
+                    @include border-radius-corner(right, top);
+                    border-right-color: $gallery;
+
+                    &:before {
+                        $arrow-size: 5px;
+                        $arrow-color: $gallery;
+
+                        position: absolute;
+                        content: "";
+                        width: 0;
+                        height: 0;
+                        top: 50%;
+                        right: 100%;
+                        margin-top: $arrow-size * -1;
+                        border-top: $arrow-size solid transparent;
+                        border-bottom: $arrow-size solid transparent; 
+                        border-right:$arrow-size solid $arrow-color;
+                        border-right-color: inherit;
+                    }
+
+                    &:hover {
+                        border-right-color: #fff;
+                    }
+                }
+                &:last-child {
+                    @include border-radius-corner(left, bottom);
+                    @include border-radius-corner(right, bottom);
+                }
+            }
+        }
+    }
+    li {
+        position: relative;
+        background: $gallery;
+
+        &:hover {
+            background: #fff;
+
+            > ul {
+                display: block;
+            }
+        }
+    }
+    a {
+        position: relative;
+        display: block;
+        padding: 8px 15px;
+        color: $rock;
+    }
+}
+
+.nav-side.slide {
+    li {
+        [class*="entypo-"] {
+            display: inline-block;
+            position: relative;
+            left: $nav-side-width - 45;
+            @include transform(translateX(0));
+            @include transition(all .3s ease-in-out);
+            @include transition-delay(.1s);
+        }
+    }
+    .menu-item {
+        display: inline-block;
+        opacity: 0;
+        @include transition(opacity .3s ease-in-out);
+    }
+    > ul {
+        position: relative;
+        left: -$nav-side-width + 40;
+        @include transform(translate(0) translateZ(0));
+        @include transition(all .3s .1s ease-in-out);
+
+        &:hover {
+            @include transform(translateX($nav-side-width - 40));
+            @include transition(all .3s ease-in-out);
+
+            li {
+                [class*="entypo-"] {
+                    @include transform(translateX(-$nav-side-width + 40));
+                    @include transition-delay(0);
+                }
+            }
+            .menu-item {
+                opacity: 1;
+                @include transition(opacity .3s .2s ease-in-out);
+            }
+        }
+    }
+    > ul {
+        ul {
+            display: block;
+            opacity: 0;
+            z-index: -1;
+            @include transform(translate(-100%));
+            @include transition(all .3s ease-in-out);
+        }
+    }
+    li:hover ul {
+        opacity: 1;
+        @include transform(translate(0));
+    }
+}
+
+.nav-side.tooltip {
+    [class*="entypo-"]:before {
+        top: 0;
+    }
+    > ul {
+        @include transform(translateX(-$nav-side-width + 40));
+    }
+    span[class*="entypo-"] {
+        display: inline-block;
+        position: relative;
+        left: $nav-side-width - 45;
+    }
+    .menu-item {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        padding: 8px 13px;
+        color: #efefef;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        border-right-color: $rock;
+        background: $rock;
+        z-index: -2;
+        @include border-radius;
+        @include transform(translate(-100%, -50%) translateZ(0));
+        @include transition(all .3s ease-in-out);
+
+        &:before {
+            $arrow-size: 5px;
+
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: $arrow-size * -1;
+            width: 0;
+            height: 0;
+            border-top: $arrow-size solid transparent;
+            border-bottom: $arrow-size solid transparent; 
+            border-right:$arrow-size solid $gallery;
+            border-right-color: inherit;
+        }
+    }
+    li:hover .menu-item {
+        @include transform(translate(10px, -50%));
+    }
+    > ul {
+        ul {
+            display: block;
+            opacity: 0;
+            z-index: -1;
+            @include transform(translate(-100%));
+            @include transition(all .3s ease-in-out);
+        }
+        > li:first-child:hover .menu-item {
+            @include transform(translate(-100%, -50%));
+        }
+    }
+    li:hover ul {
+        opacity: 1;
+        @include transform(translate(0));
+    }
+}
